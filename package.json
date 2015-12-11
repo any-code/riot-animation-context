@@ -1,6 +1,6 @@
 {
   "name": "riot-animation-context",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "animation-context Riot JS Tag animation context for dealing with css transitions and animated addition and removal of riot tags",
   "main": "animation-context.min.js",
   "directories": {
@@ -17,7 +17,23 @@
     "type": "git",
     "url": "git+https://github.com/any-code/riot-animation-context.git"
   },
-  "keywords": ["animation","context","riot","Riot","JS","Tag","css","transitions","animated","addition","removal","tags","any-code","qrb","Lee Tagg"],
+  "keywords": [
+    "animation",
+    "context",
+    "riot",
+    "Riot",
+    "JS",
+    "Tag",
+    "css",
+    "transitions",
+    "animated",
+    "addition",
+    "removal",
+    "tags",
+    "any-code",
+    "qrb",
+    "Lee Tagg"
+  ],
   "author": {
     "name": "Lee Tagg",
     "email": "lee@anycode.io",
