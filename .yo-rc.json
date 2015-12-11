@@ -1,0 +1,13 @@
+{
+  "generator-riot-tag-module": {
+    "name": "animation-context",
+    "description": "Riot JS Tag animation context for dealing with css transitions and animated addition and removal of riot tags",
+    "github": "any-code",
+    "username": "qrb",
+    "developer": "Lee Tagg",
+    "email": "lee@anycode.io",
+    "year": 2015,
+    "repo": "riot-animation-context",
+    "keywords": "[\"animation\",\"context\",\"riot\",\"Riot\",\"JS\",\"Tag\",\"for\",\"dealing\",\"with\",\"css\",\"transitions\",\"and\",\"animated\",\"addition\",\"removal\",\"of\",\"tags\",\"any-code\",\"qrb\",\"Lee Tagg\"],"
+  }
+}
