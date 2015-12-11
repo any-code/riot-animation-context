@@ -7,12 +7,14 @@
             A_REASONABLY_LONG_TIMEOUT_DEFAULT = 690;
 
         this.on('mount', function() {
-            this.in()
+            if (opts.animateOnMount === "true") {
+                this.in()
+            }
         });
 
         this.in = function() {
             var _inwards = setTimeout(function(){
-                $this.context.className = " animated " + opts.animateIn;
+                $this.context.className = " animated " + opts.animateIn + (opts.animateInfinitely === "true" ? ' infinite' : '');
             }, parseInt(opts.animateDelayMs) || 0)
         }
 
