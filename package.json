@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/any-code/riot-animation-context.git"
   },
-  "keywords": ["animation","context","riot","Riot","JS","Tag","for","dealing","with","css","transitions","and","animated","addition","removal","of","tags","any-code","qrb","Lee Tagg"],
+  "keywords": ["animation","context","riot","Riot","JS","Tag","css","transitions","animated","addition","removal","tags","any-code","qrb","Lee Tagg"],
   "author": {
     "name": "Lee Tagg",
     "email": "lee@anycode.io",

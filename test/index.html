@@ -5,11 +5,54 @@
     <title>manual test</title>
 </head>
 <body>
-    <animation-context>Content</animation-context>
+    <view>
+        <animation-context animate-on-mount="false" animate-delay-ms="1500" animate-infinite="false" animate-in="lightSpeedIn" animate-out="lightSpeedOut">
+            <child-one></child-one>
+        </animation-context>
+    </view>
+
+    <script type="riot/tag">
+        <child-one>
+            <h1>CHILD ONE</h1>
+            <style scoped>
+                :scope {
+                    display: block;
+                    position: relative;
+                }
+            </style>
+        </child-one>
+    </script>
+
+
+    <script type="riot/tag">
+        <child-two>
+            <h1>CHILD TWO</h1>
+            <style scoped>
+                :scope {
+                    display: block;
+                    position: relative;
+                }
+            </style>
+        </child-two>
+    </script>
+
+    <script type="riot/tag">
+        <view>
+            <yield/>
+            <a href="#" onclick="{ unmountSub.bind(this, 'lightSpeedOut') }">UNMOUNT</a>
+
+            this.unmountSub = function(animation) {
+                this.tags['animation-context'].out();
+            }
+        </view>
+    </script>
+
     <script src="//cdn.jsdelivr.net/riot/2.3/riot+compiler.min.js"></script>
     <script src="../animation-context.js"></script>
     <script>
-        riot.mount('animation-context')
+        riot.mount('*')
+
+
     </script>
 </body>
 </html>
