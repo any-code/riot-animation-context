@@ -22,8 +22,14 @@ npm install riot-animation-context
 
 ``` html
 
-<animation-context>
-    tag content
+<animation-context
+    animate-on-mount="true" 
+    animate-delay-ms="0" 
+    animate-infinitely="true" 
+    animate-in="rubberBand" 
+    animate-out="lightSpeedOut"
+    >
+    <p>Lizards are a widespread group of squamate reptiles, with approximately over 6,000 species ranging across all continents except Antarctica.</p>
 </animation-context>
 
 <script>
