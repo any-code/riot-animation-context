@@ -36,6 +36,15 @@
     <style scoped>
         @charset "UTF-8";
 
+        :scope {
+            display: block;
+            position: relative;
+        }
+
+        .not-ready {
+            display: none;
+        }
+
         /*!
          * Animate.css -http://daneden.me/animate
          * Version - 3.4.0
@@ -43,10 +52,6 @@
          *
          * Copyright (c) 2015 Daniel Eden
          */
-
-        .not-ready {
-            display: none;
-        }
 
         .animated {
             -webkit-animation-duration: 1s;

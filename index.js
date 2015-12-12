@@ -33,6 +33,7 @@
     } else if (typeof exports === 'undefined') {
         return function (deps, factory) { define(name, deps, factory); }
     } else {
+        require('riot'); // must find a solution to why require needs to be called with primitive
         return function (deps, factory) { module.exports = factory.apply(this, deps.map(require)); }
     }
 })(['riot'], 'animation-context') ));

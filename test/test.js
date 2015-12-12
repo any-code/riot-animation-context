@@ -1,4 +1,4 @@
-var testable = require('../index');
+var testable = require('../animation-context.min');
 
 exports.setUp = function(callback) {
   callback();
