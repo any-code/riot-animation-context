@@ -4,7 +4,26 @@
         var $this = this,
             _outwards,
             _inwards,
-            A_REASONABLY_LONG_TIMEOUT_DEFAULT = 690;
+            ANIMATED_TIMEOUT_CLEAR_DELAY = 1050;
+
+        function getEventListener(type, action){
+            var el = document.createElement('no-el'),
+                hash = {},
+                i
+
+            hash[type] = type + action
+            hash['Moz' + type[0].toUpperCase() + type.slice(1)] = type + action
+            hash['Webkit' + type[0].toUpperCase() + type.slice(1)] = 'webkit' + type[0].toUpperCase() +
+                type.slice(1) + action[0].toUpperCase() + action.slice(1)
+            hash['O' + type[0].toUpperCase() + type.slice(1)] = 'o' + type[0].toUpperCase() +
+                type.slice(1) + action[0].toUpperCase() + action.slice(1)
+
+            for(i in hash){
+                if(el.style[i] !== undefined){ return hash[i]; }
+            }
+
+            return 'fallback';
+        }
 
         this.on('mount', function() {
             if (opts.animateOnMount === "true") {
@@ -14,22 +33,24 @@
 
         this.in = function() {
             var _inwards = setTimeout(function(){
-                $this.context.className = " animated " + opts.animateIn + (opts.animateInfinitely === "true" ? ' infinite' : '');
+                $this.context.className = "animated " + opts.animateIn + (opts.animateInfinitely === "true" ?
+                        ' infinite' : '');
             }, parseInt(opts.animateDelayMs) || 0)
         }
 
         this.out = function() {
-            $this.context.className = " animated " + opts.animateOut;
-            var _outwards = setTimeout(function() {
-                clearTimeout(_inwards)
-                $this.unmount();
-            }, A_REASONABLY_LONG_TIMEOUT_DEFAULT)
-
-            $this.context.addEventListener("transitionend", function() {
+            $this.context.addEventListener(getEventListener('animation', 'end'), function() {
                 clearTimeout(_inwards)
                 clearTimeout(_outwards)
                 $this.unmount();
             }, false);
+
+            $this.context.className = "animated " + opts.animateOut;
+
+            var _outwards = setTimeout(function() {
+                clearTimeout(_inwards)
+                $this.unmount();
+            }, ANIMATED_TIMEOUT_CLEAR_DELAY)
         }
 
     </script>
