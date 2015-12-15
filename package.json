@@ -55,7 +55,6 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-riot": "^1.0.1",
     "mocha": "^2.3.4",
-    "nodeunit": "^0.9.1",
     "phantomjs": "^1.9.19"
   }
 }
