@@ -51,24 +51,41 @@ riot.tag2('animation-context', '<div name="context" class="not-ready"><yield></y
         });
 
         this.in = function() {
-            var _inwards = setTimeout(function(){
-                $this.context.className = "animated " + opts.animateIn + (opts.animateInfinitely === "true" ?
-                        ' infinite' : '');
+            var cls = "animated " + opts.animateIn + (opts.animateInfinitely === "true" ? ' infinite' : '')
+
+            $this.context.addEventListener(getEventListener('animation', 'end'), function() {
+                if ($this.context.className === cls) {
+                    $this.trigger('animation-in');
+                }
+            }, false);
+
+            _inwards = setTimeout(function() {
+                $this.context.className = cls
             }, parseInt(opts.animateDelayMs) || 0)
         }
 
         this.out = function() {
+            var cls = "animated " + opts.animateOut
+
             $this.context.addEventListener(getEventListener('animation', 'end'), function() {
-                clearTimeout(_inwards)
-                clearTimeout(_outwards)
-                $this.unmount();
+                if ($this.context.className === cls) {
+                    clearTimeout(_inwards)
+                    clearTimeout(_outwards)
+                    $this.trigger('animation-out');
+                    if (opts.animateOnMount === "true") {
+                        $this.unmount();
+                    }
+                }
             }, false);
 
-            $this.context.className = "animated " + opts.animateOut;
+            $this.context.className = cls;
 
-            var _outwards = setTimeout(function() {
+            _outwards = setTimeout(function() {
                 clearTimeout(_inwards)
-                $this.unmount();
+                $this.trigger('animation-out');
+                if (opts.animateOnMount === "true") {
+                    $this.unmount();
+                }
             }, ANIMATED_TIMEOUT_CLEAR_DELAY)
         }
 

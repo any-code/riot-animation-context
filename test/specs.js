@@ -14,7 +14,7 @@ describe('Application specs', function () {
             type.slice(1) + action[0].toUpperCase() + action.slice(1)
 
         for(i in hash){
-            if(el.style[i] !== undefined){ return hash[i]; }
+            if(el.style[i] !== undefined){ return hash[i] }
         }
 
         return 'fallback';
