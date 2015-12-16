@@ -77,4 +77,17 @@ describe('Application specs', function () {
         });
     })
 
+    it('triggers animation-in after animate in', function (done) {
+        this.timeout(3000);
+        element.setAttribute("animate-on-mount", "false")
+        element.setAttribute("animate-auto-in-delay", "1000")
+        var tag = riot.mount('animation-context')[0];
+
+        tag.on('animation-in', function() {
+            expect(document.querySelector('div[name=context]').className)
+                .to.be('animated fadeIn')
+            done()
+        })
+    })
+
 })

@@ -54,7 +54,6 @@ riot.tag2('animation-context', '<div name="context" class="not-ready"><yield></y
             if (opts.animateOnMount === "true") {
                 this.in()
             }
-
         });
 
         this.in = function() {

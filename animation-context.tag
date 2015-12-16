@@ -35,8 +35,6 @@
             if (opts.animateOnMount === "true") {
                 this.in()
             }
-
-
         });
 
         this.in = function() {
