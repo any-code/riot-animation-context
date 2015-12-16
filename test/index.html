@@ -7,19 +7,20 @@
 <body>
     <view>
         <div name="list">
+            <child-one></child-one>
         </div>
     </view>
 
     <script type="riot/tag">
         <child-one>
-            <animation-context animate-on-mount="true" animate-delay-ms="0" animate-infinitely="false" animate-in="fadeInRight" animate-out="fadeOutRight">
+            <animation-context animate-on-mount="false" animate-auto-in-delay="500" animate-auto-out-delay="500" animate-infinitely="false" animate-in="fadeInRight" animate-out="hinge">
                 <div class="thumb">
                     <a href="#" onclick="{ out }" title="click to remove">X</a>
                 </div>
             </animation-context>
             <style scoped>
                 :scope {
-                    display: block;
+                    display: inline-block;
                     position: relative;
                 }
 
@@ -31,8 +32,7 @@
                     height: 6rem;
                     width: 6rem;
                     margin: 1rem;
-
-
+                    position: relative;
                 }
 
                 .thumb a {

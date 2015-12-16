@@ -45,32 +45,47 @@ riot.tag2('animation-context', '<div name="context" class="not-ready"><yield></y
         }
 
         this.on('mount', function() {
+            var delay
+            if ((delay = parseInt(opts.animateAutoInDelay,10)) > 0) {
+               _inwards = setTimeout(function() {
+                   this.in()
+               }.bind(this), delay)
+            }
             if (opts.animateOnMount === "true") {
                 this.in()
             }
+
         });
 
         this.in = function() {
+            clearTimeout(_inwards)
+            clearTimeout(_outwards)
             var cls = "animated " + opts.animateIn + (opts.animateInfinitely === "true" ? ' infinite' : '')
 
             $this.context.addEventListener(getEventListener('animation', 'end'), function() {
                 if ($this.context.className === cls) {
                     $this.trigger('animation-in');
+                    var delay
+                    if ((delay = parseInt(opts.animateAutoOutDelay,10)) > 0) {
+                        _outwards = setTimeout(function() {
+                            $this.out()
+                        }, delay)
+                    }
                 }
             }, false);
 
-            _inwards = setTimeout(function() {
-                $this.context.className = cls
-            }, parseInt(opts.animateDelayMs) || 0)
+            $this.context.className = cls
         }
 
         this.out = function() {
             var cls = "animated " + opts.animateOut
+            clearTimeout(_inwards)
+            clearTimeout(_outwards)
 
             $this.context.addEventListener(getEventListener('animation', 'end'), function() {
                 if ($this.context.className === cls) {
-                    clearTimeout(_inwards)
                     clearTimeout(_outwards)
+                    clearTimeout(_inwards)
                     $this.trigger('animation-out');
                     if (opts.animateOnMount === "true") {
                         $this.unmount();
@@ -81,7 +96,6 @@ riot.tag2('animation-context', '<div name="context" class="not-ready"><yield></y
             $this.context.className = cls;
 
             _outwards = setTimeout(function() {
-                clearTimeout(_inwards)
                 $this.trigger('animation-out');
                 if (opts.animateOnMount === "true") {
                     $this.unmount();
