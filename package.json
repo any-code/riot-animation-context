@@ -1,6 +1,6 @@
 {
   "name": "riot-animation-context",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "animation-context Riot JS Tag animation context for dealing with css transitions and animated addition and removal of riot tags",
   "main": "animation-context.min.js",
   "directories": {
