@@ -29,20 +29,38 @@ npm install riot-animation-context
    
 ```
 
+the following `animation-context` when mounted will immediately `rubberBand`, then wait 2000ms and `lightSpeedOut` note that inner scope belongs to `animation-context` so to call methods and interact with opts and properties of the outer tag the parent property is required. Because `animate-on-mount` is `true`, the `animate-out` will also cause the animation-context to `unmount` once it is finished.
+
 ``` html
 
-<animation-context
-    animate-on-mount="true" 
-    animate-delay-ms="0" 
-    animate-infinitely="true" 
-    animate-in="rubberBand" 
-    animate-out="lightSpeedOut"
-    >
-    <p>Lizards are a widespread group of squamate reptiles, with approximately over 6,000 species ranging across all continents except Antarctica.</p>
-</animation-context>
+<my-riot-tag>
+    <!-- animate anything inside the animation context -->
+    <animation-context name="animator"
+        animate-on-mount="true" 
+        animate-infinitely="true" 
+        animate-in="rubberBand" 
+        animate-auto-out-delay="2000"
+        animate-out="lightSpeedOut"
+        >
+        <button onclick={ parent.becomeAwesome }>CLICK ME TO <em>BECOME AWESOME</em></button>
+    </animation-context>
+
+    <script>
+        // By assigning a name to the animation context you can use it 
+        // as in the following code sample:-
+        // this.animator.in()
+        // this.animator.out()
+        // in() and out() font need to be manually called because we have 
+        // supplied the animate-on-mount="true" attribute
+        
+        this.becomeAwesome = function() {
+            alert('impossible!')
+        }
+    </script>
+</my-riot-tag>
 
 <script>
-    riot.mount('animation-context');
+    riot.mount('my-riot-tag');
 </script>
 ```
 
