@@ -4,6 +4,10 @@
 
 > Riot JS Tag animation context for dealing with css transitions and animated addition and removal of riot tags or just dynamically ineracting with css animations
 
+## Demonstration
+
+[riot-animation-context](http://any-code.github.io/animation-context.html "riot-animation-context - Anycode on GitHub")
+
 Includes animate.css for base animations, these can be overridden or added to in external css.
 
 ## Why not just use animate.css
@@ -105,7 +109,7 @@ Wait x number of milliseconds after `animate-in` has finished to start playing `
 ```
 
 ## Copyright and license
-Copyright (c) 2015 any-code qrb <lee@anycode.io>
+Copyright (c) 2015 [Anycode](https://anycode.io/ "Anycode") <lee@anycode.io>
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
